@@ -51,15 +51,13 @@ int main(int argc, char **argv) {
             perror("[-] Error receiving data");
             exit(1);
         }
-        buffer[n] = '\0'; // Ensure buffer is null-terminated
+        buffer[n] = '\0'; 
 
         printf("[+] Data received from client: %s\n", buffer);
 
-        // Get current time
         current_time = time(NULL);
         snprintf(buffer, BUFFER_SIZE, "%s", ctime(&current_time));
 
-        // Send current time back to client
         n = sendto(sockfd, buffer, strlen(buffer), 0, (struct sockaddr *)&client_addr, addr_size);
         if (n < 0) {
             perror("[-] Error sending data");

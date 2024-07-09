@@ -51,7 +51,7 @@ int main(int argc, char **argv) {
         close(sockfd);
         exit(1);
     }
-    buffer[n] = '\0'; // Ensure buffer is null-terminated
+    buffer[n] = '\0'; 
 
     // Calculate round-trip time (RTT)
     end_time = time(NULL);

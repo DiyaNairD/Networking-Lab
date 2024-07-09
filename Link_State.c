@@ -16,7 +16,8 @@ int main()
         {
             printf("%d -> %d: ", i, j);
             scanf("%d", &cost_matrix[i][j]);
-            if (cost_matrix[i][j] < 0) cost_matrix[i][j] = 1000;
+            if (cost_matrix[i][j] < 0) 
+                cost_matrix[i][j] = 1000;
         }
     }
 

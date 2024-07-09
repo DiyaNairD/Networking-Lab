@@ -38,12 +38,10 @@ int main(int argc, char **argv) {
     server_addr.sin_port = htons(port);
     server_addr.sin_addr.s_addr = inet_addr(ip);
 
-    // Send request to server
     strcpy(buffer, "What is the current time?");
     sendto(sockfd, buffer, strlen(buffer), 0, (struct sockaddr *)&server_addr, sizeof(server_addr));
     printf("[+] Request sent: %s\n", buffer);
 
-    // Receive response from server
     addr_size = sizeof(server_addr);
     n = recvfrom(sockfd, buffer, BUFFER_SIZE, 0, (struct sockaddr *)&server_addr, &addr_size);
     if (n < 0) {
@@ -53,11 +51,9 @@ int main(int argc, char **argv) {
     }
     buffer[n] = '\0'; 
 
-    // Calculate round-trip time (RTT)
     end_time = time(NULL);
     rtt_ms = difftime(end_time, start_time) * 1000.0;
 
-    // Display received time and RTT
     printf("[+] Time received from server: %s\n", buffer);
     printf("    Round-trip time: %.2f milliseconds\n", rtt_ms);
 
